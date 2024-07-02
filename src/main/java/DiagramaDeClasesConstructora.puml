@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "Constructora"
+
+
+abstract class Material {
+    -cantidad:int
+    +Material(cantidad:int) : void
+    +restarMaterial(material:Material):Material
+    +obtenerCantidad(cantidad:int)
+}
+
+class Cemento {
+    +Cemento(cantidad: int)
+    +restarMaterial(material: Material): Material
+}
+
+class Pintura {
+    +Pintura(cantidad: int)
+    +restarMaterial(material: Material): Material
+}
+
+class Canios {
+    +Canios(cantidad: int)
+    +restarMaterial(material: Material): Material
+}
+
+
+
+@enduml
