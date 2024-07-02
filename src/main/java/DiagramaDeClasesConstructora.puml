@@ -11,21 +11,68 @@ abstract class Material {
     +obtenerCantidad(cantidad:int)
 }
 
-class Cemento {
+class Cemento extends Material{
     +Cemento(cantidad: int)
     +restarMaterial(material: Material): Material
+    +equals(material: Object):bool
 }
 
-class Pintura {
+class Pintura extends Material{
     +Pintura(cantidad: int)
     +restarMaterial(material: Material): Material
+    +equals(material: Object):bool
 }
 
-class Canios {
+class Canios extends Material{
     +Canios(cantidad: int)
     +restarMaterial(material: Material): Material
+    +equals(material: Object):bool
 }
 
 
+abstract class Almacen {
+    +agregarMateriales(material: Material)
+    +usarMaterial(material: Material)
+    +cantidadMateriales(cantidad:int):int
+}
+
+Almacen o--"*"Material 
+
+
+
+class Casa {
+    -ambientes:int
+    +Casa(ambientes:int)
+    -construirBase(nuevoAlmacen:Almacen)
+    +construirCasa(nuevoAlmacen:Almacen)
+}
+
+Casa ..> Almacen
+
+
+class Edifio {
+    -pisos:int
+    +Edificio(pisos:int)
+    -construirBase(plantas:int)
+    -construirPlantaBaja(nuevoAlmacen:Almacen)
+    -onstruirPlanta(nuevoAlmacen:Almacen)
+    +construirEdificio(nuevoAlmacen:Almacen)
+}
+
+Edifio ..> Almacen
+
+class Complejo {
+    -cantidadDeCasas:int
+    -cantidadDeEdificios:int
+    +Complejo(cantidadDeCasas:int, cantidadDeEdificios:int)
+    +construirCasas(nuevoAlmacen:Almacen)
+    +construirEdificos(nuevoAlmacen:Almacen)
+    +construirComplejo(nuevoAlmacen:Almacen)
+}
+
+Complejo --> Casa
+Complejo --> Edifio
+
+Complejo ..>Almacen
 
 @enduml
