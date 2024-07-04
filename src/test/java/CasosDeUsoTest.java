@@ -30,8 +30,8 @@ public class CasosDeUsoTest {
 
         int remanenteEsperado = 0;
 
-        Cemento cemento =  new Cemento(100);
-        Pintura pintura = new Pintura(2500);
+        Cemento cemento =  new Cemento(700);
+        Pintura pintura = new Pintura(2700);
         Canios canio = new Canios(500);
 
         Almacen almacen = new Almacen();
@@ -40,9 +40,9 @@ public class CasosDeUsoTest {
         almacen.agregarMateriales(pintura);
         almacen.agregarMateriales(canio);
 
-        Casa nuevaCasa = new Casa(5);
+        Edificio nuevoEdificio = new Edificio(5);
 
-        nuevaCasa.construirCasa(almacen);
+        nuevoEdificio.construirEdificio(almacen);
 
         assertEquals(remanenteEsperado, almacen.cantidadMateriales());
     }

@@ -1,0 +1,81 @@
+@startuml Diagrama de Secuencia
+title Diagrama de Secuencia
+
+skinparam monochrome true
+hide footbox
+
+participant Actor
+participant "cemento:Cemento" as Cemento
+participant "pintura:Pintura" as Pintura
+participant "canio:Canios" as Canios
+participant "nuevaCasa:Casa" as Casa
+participant "nuevoEdificio:Edificio" as Edificio
+participant "almacen:Almacen" as Almacen
+
+create Cemento
+Actor -> Cemento: Cemento(100)
+
+create Pintura
+Actor -> Pintura: Pintura(2500)
+
+create Canios
+Actor -> Canios: Canios(500)
+
+create Casa
+Actor -> Casa: Casa(5)
+
+create Edificio
+Actor -> Edificio: Edificio(5)
+
+create Almacen
+Actor -> Almacen
+
+activate Almacen
+
+Actor -> Almacen: agregarMateriales(Cemento)
+Almacen -> Almacen: add(Cemento)
+
+Actor -> Almacen: agregarMateriales(Pintura)
+Almacen -> Almacen: add(Pintura)
+
+Actor -> Almacen: agregarMateriales(Canios)
+Almacen -> Almacen: add(Canios)
+
+create Edificio
+Actor -> Edificio: construirEdificio(almacen)
+
+Edificio -> Edificio: construirBase(almacen)
+Edificio -> Almacen: usarMaterial(new Cemento(100))
+Edificio -> Almacen: usarMaterial(new Pintura(100))
+Edificio -> Almacen: usarMaterial(new Canios(100))
+
+Edificio -> Edificio: construirPlantaBaja(almacen)
+Edificio -> Casa: construirCasa(almacen)
+
+Casa -> Almacen: usarMaterial(new Cemento(50))
+Almacen -> Cemento: restarMaterial(new Cemento(50))
+
+Casa -> Almacen: usarMaterial(new Cemento(10 * ambientes))
+Almacen -> Cemento: restarMaterial(new Cemento(10 * ambientes))
+
+Casa -> Almacen: usarMaterial(new Pintura(100 * ambientes))
+Almacen -> Pintura: restarMaterial(new Pintura(100 * ambientes))
+
+Casa -> Almacen: usarMaterial(new Canios(500 * ambientes))
+Almacen -> Canios: restarMaterial(new Canios(500 * ambientes))
+
+Edificio -> Edificio: construirPlanta(almacen)
+
+loop Construir cada planta
+    Edificio -> Almacen: usarMaterial(new Cemento(100 * i))
+    Almacen -> Cemento: restarMaterial(new Cemento(100 * i))
+end    
+    
+Edificio -> Almacen: usarMaterial(new Canios(100))
+Almacen -> Canios: restarMaterial(new Canios(100))
+    
+Edificio -> Almacen: usarMaterial(new Pintura(100))
+Almacen -> Pintura: restarMaterial(new Pintura(100))
+
+
+@enduml
