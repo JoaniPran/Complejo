@@ -37,10 +37,9 @@ Para ejecutar las pruebas:
 ```bash
 mvn test
 ```
+## 
 
-## Mostrar en GitHub
-
-Este repositorio está listo para mostrarse en GitHub con:
+Este repositorio contiene:
 - código Java en `src/main/java`
 - pruebas en `src/test/java`
 - definición de proyecto Maven en `pom.xml`
