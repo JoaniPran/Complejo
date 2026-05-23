@@ -12,8 +12,6 @@ public class Almacen {
 
         int i = 0;
 
-        Material materialRestar;
-
         for (i = 0; i < materiales.size(); i++){
             if (materiales.get(i).equals(material)){
 
