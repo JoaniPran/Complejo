@@ -30,7 +30,7 @@ public class CasosDeUsoTest {
 
         int remanenteEsperado = 0;
 
-        Cemento cemento =  new Cemento(700);
+        Cemento cemento =  new Cemento(1900);
         Pintura pintura = new Pintura(2700);
         Canios canio = new Canios(500);
 
